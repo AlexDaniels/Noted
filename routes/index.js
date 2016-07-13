@@ -6,6 +6,9 @@ var mongo = require('mongodb');
 router.get('/', function(req, res) {
   res.render('index', { title: 'Welcome to Noted' });
 });
+router.get('/home', function(req, res) {
+  res.render('home', { title: 'Username' });
+});
 
 
 

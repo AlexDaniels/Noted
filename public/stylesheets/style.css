@@ -2,27 +2,26 @@ body {
 	color: #01A9DB;
 	background-color: #01A9DB
 }
+
 #header {
 	height : 50px;
 }
+#footing {
+	position: fixed;
+	bottom: 0px;
+	height: 20px;
+	background-color: #CC0066
+}
+
 #title {
 	margin-top: -15px
 }
-h1 {
-	color: black;
-}
-.col-centered {
-    float: none;
-    margin: 0 auto;
-}
-
 
 #nav {
 	margin-top:10px;
 	height : 90px;
 	background-color: #CC0066;
 }
-
 #nav input{
 	margin-top: 35px;
 }
@@ -33,6 +32,10 @@ h1 {
 	margin-top: 25px;
 }
 
+h1 {
+	color: black;
+}
+
 button {
 	color:black;
 	background-color: #FFFF33;
@@ -41,32 +44,7 @@ button:hover {
 	background-color: #F3F781;
 }
 
-.main {
-	margin-top: 50px;
-	height: 350px;
-	border-radius: 10px;
-	background-color: #CC0066;
-}
-#about {
-	color: black;
-}
-
-#signup *{
-	margin-top: 20px;
-}
-
-#footing {
-	position: absolute;
-	bottom: 0px;
-	height: 20px;
-	background-color: #CC0066
-}
-
-input {
-	color: black;
-	text-align: center;
-}
-
-label {
-	text-align: center;
+.col-centered {
+    float: none;
+    margin: 0 auto;
 }

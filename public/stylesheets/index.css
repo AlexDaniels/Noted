@@ -1,0 +1,29 @@
+.main {
+	margin-top: 50px;
+	height: 350px;
+	border-radius: 10px;
+	background-color: #CC0066;
+}
+
+input {
+	color: black;
+	text-align: center;
+}
+
+label {
+	text-align: center;
+}
+
+.main {
+	margin-top: 50px;
+	height: 350px;
+	border-radius: 10px;
+	background-color: #CC0066;
+}
+#about {
+	color: black;
+}
+
+#signup *{
+	margin-top: 20px;
+}

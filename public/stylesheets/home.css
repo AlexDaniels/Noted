@@ -1,0 +1,45 @@
+#boardSearch {
+	height :130px;
+	border-radius: 10px;
+	background-color: #CC0066;
+	margin-top: 20px
+}
+
+#myBoards {
+	height :130px;
+	border-radius: 10px;
+	overflow-y: scroll;
+	background-color: #CC0066;
+	margin-top: 20px
+}
+
+#subs {
+	height :130px;
+	border-radius: 10px;
+	overflow-y: scroll;
+	background-color: #CC0066;
+	margin-top: 20px
+}
+
+#popular {
+	height :130px;
+	border-radius: 10px;
+	background-color: #CC0066;
+	margin-top: 20px
+}
+
+#top {
+	height :130px;
+	border-radius: 10px;
+	background-color: #CC0066;
+	margin-top: 20px
+}
+
+#myStuff {
+	 
+}
+
+h2 {
+	font-size: 20px;
+	text-align: center;
+}
