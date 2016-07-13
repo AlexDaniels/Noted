@@ -1,0 +1,11 @@
+{
+  "name": "notemanager",
+  "version": "1.0.0",
+  "description": "Restful API for Note objects",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "Alex Daniels",
+  "license": "ISC"
+}

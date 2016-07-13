@@ -1,0 +1,11 @@
+{
+  "name": "messagemanager",
+  "version": "1.0.0",
+  "description": "Restful api for message objects",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "Alex Daniels",
+  "license": "ISC"
+}

@@ -1,0 +1,41 @@
+extends layout
+
+block heading
+	div.container-fluid
+		div.row
+			div#header.col-lg-12
+				section#logo.col-lg-1
+					image(src='images/logo.png' height='50px' width='50px')
+				section#title.col-lg-3.col-centered
+					h1=title
+block navBar
+	div.container-fluid
+		div.row
+			div#nav.col-lg-12
+				input.col-lg-3(type='text')
+				label.col-lg-1='Username'
+				input.col-lg-3(type='password')
+				label.col-lg-1='Password'
+				button.col-lg-3.col-lg-offset-1.btn.btn-lg='Login'
+block page
+	div.container-fluid
+		div.row
+			div#about.col-lg-4.col-lg-offset-1.main
+				h2="About Noted"
+				p="Noted is a web application for organizing your ideas. It's free to sign up and use. It was designed as a final project for Langara CPSC 2201 - Web Technology"
+			div#signup.col-lg-4.col-lg-offset-2.main
+				input.col-lg-12(type='text')
+				label.col-lg-12='Username'
+				input.col-lg-12(type='password')
+				label.col-lg-12='Password'
+				input.col-lg-12(type='text')
+				label.col-lg-12='Email Address'
+				button.col-lg-10.col-lg-offset-1.btn.btn-lg='Sign Up'
+block footing
+	div.container-fluid
+		div.row
+			div#footing.col-lg-12
+				footer
+					p.col-lg-3="Created By: Alex Daniels"
+					p.col-lg-3.col-lg-offset-2="Phone Number: 807-630-1290"
+					p.col-lg-3.col-lg-offset-1="Email: AlexDanielsOnline@gmail.com"

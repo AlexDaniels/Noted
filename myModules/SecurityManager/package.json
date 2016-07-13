@@ -1,0 +1,11 @@
+{
+  "name": "securitymanager",
+  "version": "1.0.0",
+  "description": "Handles secuirty and session management for the noted app",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "Alex Daniels",
+  "license": "ISC"
+}

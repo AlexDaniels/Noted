@@ -1,0 +1,11 @@
+{
+  "name": "usermanager",
+  "version": "1.0.0",
+  "description": "Encapsulates user ralated functions and provides high level services",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "Alex Danies",
+  "license": "ISC"
+}
