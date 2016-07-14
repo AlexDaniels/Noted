@@ -1,9 +1,31 @@
 #boardSearch {
-	height :130px;
 	border-radius: 10px;
 	background-color: #CC0066;
 	margin-top: 20px
 }
+.searchInput{
+	position: relative;
+	top: 40px;
+	margin-bottom: 100px;
+	
+}
+.searchButton {
+	position: relative;
+	top: 30px;
+}
+.result {
+	height: 60px;
+	margin-bottom: 20px;
+	background-color: #7401DF;
+}
+.result button{
+	margin-top: 13px;
+}
+.result p{
+	margin-top: 17px;
+}
+
+
 
 #myBoards {
 	height :130px;
@@ -32,6 +54,7 @@
 	height :130px;
 	border-radius: 10px;
 	background-color: #CC0066;
+	margin-bottom: 50px;
 	margin-top: 20px
 }
 

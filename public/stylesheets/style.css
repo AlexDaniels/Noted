@@ -29,6 +29,7 @@ body {
 	margin-top: 39px;
 }
 #nav button{
+	position: relative;
 	margin-top: 25px;
 }
 
@@ -38,7 +39,7 @@ h1 {
 
 button {
 	color:black;
-	background-color: #FFFF33;
+	background-color: #64FE2E;
 }
 button:hover {
 	background-color: #F3F781;

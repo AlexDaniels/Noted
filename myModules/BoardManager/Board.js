@@ -2,6 +2,7 @@ var Board = function(args) {
 	args = args || {};
 	this.name = args.name;
 	this.category = args.category;
+	this.description = args.description;
 	this.state = args.state;
 	this.messages = args.messages;
 	this.notes = args.notes;
