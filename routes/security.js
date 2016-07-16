@@ -4,28 +4,29 @@ var SecurityManager = require('../myModules/SecurityManager');
 
 router.post('/login', function(req, res) {
 	var sm = new SecurityManager();
-	if (sm.isUserAuthenticated) {
-		res.json({result:"Already Logged In"})
+	if (sm.session.isUserAuthenticated(req)) {
+		res.render('home')
 	}
 	else {
 		var username = req.query.username
 		var password = req.query.password
 		var next = function(val) {
 			if (val.result === true) {
-				//Render logged in homepage
+				res.render('home')
 			}
 			else {
-				//Return Incorrect Username or password
+				res.render('error')
 			}
 		}
 
-		sm.login(username,password,req,next)
+		sm.session.login(username,password,req,next)
 	}
 });
 router.post('/logout', function(req, res) {
 	var sm = new SecurityManager()
-	sm.logout(req);
+	sm.session.logout(req);
 	//Render index
+	res.render('index');
 });
 
 module.exports = router;

@@ -1,13 +1,18 @@
-#boardSearch {
+#nav {
+	margin-bottom: 15px;
+}
+
+.searcher {
 	border-radius: 10px;
 	background-color: #CC0066;
-	margin-top: 20px
+	border-radius: 10px;
+	border-style: solid;
+	border-color: black;
+	margin-bottom: 15px;
 }
 .searchInput{
 	position: relative;
 	top: 40px;
-	margin-bottom: 100px;
-	
 }
 .searchButton {
 	position: relative;
@@ -15,8 +20,11 @@
 }
 .result {
 	height: 60px;
-	margin-bottom: 20px;
+	margin-top: 15px;
 	background-color: #7401DF;
+	border-radius: 10px;
+	border-style: solid;
+	border-color: black; 
 }
 .result button{
 	margin-top: 13px;
@@ -25,41 +33,56 @@
 	margin-top: 17px;
 }
 
-
-
-#myBoards {
-	height :130px;
-	border-radius: 10px;
-	overflow-y: scroll;
-	background-color: #CC0066;
-	margin-top: 20px
+.myboards {
+	height: 55px;
+	background-color: #7401DF;
+	margin-top: 6px;
+	border-radius: 5px;
+	border-style: solid;
+	border-color: black; 
 }
 
-#subs {
-	height :130px;
+.myboards p {
+	margin-top: -6px;
+	margin-bottom: 0px;
+}
+.myboards button {
+	margin-top: 3px;
+}
+.myboards h3 {
+	margin-top: 0px;
+}
+
+#myBoards {
+	height :140px;
 	border-radius: 10px;
 	overflow-y: scroll;
 	background-color: #CC0066;
-	margin-top: 20px
+	margin-top: 15px
+	border-radius: 10px;
+	border-style: solid;
+	border-color: black; 
+	margin-bottom: 15px
+}
+
+#mySubs {
+	height :140px;
+	border-radius: 10px;
+	overflow-y: scroll;
+	background-color: #CC0066;
+	margin-top: 15px
+	border-radius: 10px;
+	border-style: solid;
+	border-color: black; 
 }
 
 #popular {
 	height :130px;
 	border-radius: 10px;
 	background-color: #CC0066;
-	margin-top: 20px
-}
-
-#top {
-	height :130px;
 	border-radius: 10px;
-	background-color: #CC0066;
-	margin-bottom: 50px;
-	margin-top: 20px
-}
-
-#myStuff {
-	 
+	border-style: solid;
+	border-color: black;
 }
 
 h2 {

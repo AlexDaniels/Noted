@@ -1,9 +1,9 @@
-var BoardSearch = React.createClass({
+	var BoardSearch = React.createClass({
 	getInitialState : function() {
 		return {
 			results: [],
 			style : {
-				'height':'110px'
+				height:'110px'
 			}
 		}
 	},
@@ -35,21 +35,17 @@ var BoardSearch = React.createClass({
 		)
 	},
 	render : function() {
+		
 		return (
-			<div style={this.state.style}>
-				<div id='search row' overflowY='scroll'>
+				<div id='search' className='row searcher' overflowY='scroll' style={this.state.style}>
 					<input type='text' className='col-lg-6 col-lg-offset-1 searchInput' placeholder='Board Name or Keyword' ></input>
 					<button className='btn btn-lg col-lg-3 col-lg-offset-1 searchButton' onClick={this.search}>Search</button>
 					<br />
-					<br /> 
 					<br />
+					<br />
+					<br />
+					{this.state.results.map(this.eachResult)}
 				</div>
-				<br />
-				<br />
-				<br />
-				<br />
-					 {this.state.results.map(this.eachResult)}
-			</div>
 		)
 	}
 });
@@ -58,15 +54,15 @@ var BoardResult = React.createClass({
 	render: function() {
 		return (
 			<div className='result row' >
-				<h3 className='col-lg-4'>{this.props.name}</h3>
+				<h3 className='col-lg-2'>{this.props.name}</h3>
 				<p className='col-lg-4'>{this.props.description}</p>
-				<button className='col-lg-1 col-lg-offset-1 btn'>Open</button>
-				<button className='col-lg-1 btn'>Subscribe</button>
+				<button className='col-lg-2 col-lg-offset-1 btn'>Open</button>
+				<button className='col-lg-2 btn'>Subscri be</button>
 			</div>
 		)
 	}
 });
 
 window.onload = function() {
-	ReactDOM.render(<BoardSearch></BoardSearch>, document.getElementById('boardSearch'));
+	ReactDOM.render(<BoardSearch></BoardSearch>, document.getElementById('boardSearchComponent'));
 }

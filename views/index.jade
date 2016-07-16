@@ -9,25 +9,26 @@ block heading
 block navBar
 	div.container-fluid
 		div.row
-			div#nav.col-lg-12
-				input.col-lg-3(type='text')
-				label.col-lg-1='Username'
-				input.col-lg-3(type='password')
-				label.col-lg-1='Password'
-				button.col-lg-3.col-lg-offset-1.btn.btn-lg='Login'
+			div#indexnav.col-lg-12.col-md-12.col-sm-12.col-xs-12
+				input.col-lg-3.col-md-3.col-sm-3.col-xs-12(type='text')
+				label.col-lg-1.col-md-1.col-sm-2.col-xs-12='Username'
+				input.col-lg-3.col-lg-offset-0.col-md-3.col-md-offset-1.col-sm-3.col-xs-12(type='password')
+				label.col-lg-1.col-md-1.col-sm-2.col-xs-12='Password'
+				button.col-lg-3.col-lg-offset-1.col-md-2.col-md-offset-1.col-sm-2.col-xs-12.btn.btn-lg='Login'
 block page
 	div.container-fluid
 		div.row
-			div#about.col-lg-4.col-lg-offset-1.main
+			div#about.col-lg-4.col-lg-offset-1.col-md-4.col-md-offset-1.col-sm-4.col-sm-offset-1.col-xs-12.main
 				h2="About Noted"
-				p="Noted is a web application for organizing your ideas. It's free to sign up and use. It was designed as a final project for Langara CPSC 2201 - Web Technology"
-			div#signup.col-lg-4.col-lg-offset-2.main
-				input.col-lg-12(type='text')
-				label.col-lg-12='Username'
-				input.col-lg-12(type='password')
-				label.col-lg-12='Password'
-				input.col-lg-12(type='text')
-				label.col-lg-12='Email Address'
-				button.col-lg-10.col-lg-offset-1.btn.btn-lg='Sign Up'
+				p="Noted is a web application for organizing your ideas. It's free to sign up and use." 
+				p="It was designed as a final project for Langara CPSC 2201 - Web Technology"
+			div#signup.col-lg-4.col-lg-offset-2.col-md-4.col-md-offset-2.col-sm-4.col-sm-offset-2.col-xs-12.main
+				input.col-xs-12(type='text')
+				label.col-xs-12='Username'
+				input.col-xs-12(type='password')
+				label.col-xs-12='Password'
+				input.col-xs-12(type='text')
+				label.col-xs-12='Email Address'
+				button.col-xs-10.col-xs-offset-1.btn='Sign Up'
 block footing
 	include partials/footer

@@ -4,13 +4,17 @@ body {
 }
 
 #header {
-	height : 50px;
+	height : 45px;
 }
 #footing {
 	position: fixed;
 	bottom: 0px;
 	height: 20px;
 	background-color: #CC0066
+}
+
+#footing p {
+	font-size: 10px;
 }
 
 #title {

@@ -1,6 +1,23 @@
+#about {
+	color: black;
+	height: 200px;
+	border-radius: 10px;
+	border-style: solid;
+	border-color: black;
+	margin-bottom: 15px;
+}
+
+#signup {
+	color: black;
+	height: 330px;
+	border-radius: 10px;
+	border-style: solid;
+	border-color: black;
+	margin-bottom: 30px;
+}
+
 .main {
 	margin-top: 50px;
-	height: 350px;
 	border-radius: 10px;
 	background-color: #CC0066;
 }
@@ -14,10 +31,33 @@ label {
 	text-align: center;
 }
 
-#about {
-	color: black;
+#signup * {
+	margin-top: 12px;
 }
 
-#signup * {
-	margin-top: 18px;
+#indexnav {
+	margin-top:10px;
+	height : 90px;
+	background-color: #CC0066;
+	border-radius: 10px;
+	border-style: solid;
+	border-color: black;
+}
+#indexnav input{
+	margin-top: 35px;
+}
+#indexnav label {
+	margin-top: 39px;
+}
+#indexnav button{
+	position: relative;
+	margin-top: 25px;
+}
+
+@media (max-width: 768px){
+	#indexnav {
+		margin-top:0px;
+		height : 350px;
+		background-color: #CC0066;
+	}
 }

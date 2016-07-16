@@ -16,7 +16,7 @@ SecurityManager.prototype.session = {
 				var collection = db.collection('users')
 				collection.find({username:username}).toArray(function(err, user) {
 					if (err) {
-						next({result:falses});
+						next({result:false});
 					}
 					else {
 						if (authenticate(username, user.password)) {

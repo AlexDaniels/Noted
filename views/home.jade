@@ -1,9 +1,8 @@
 extends layout
 
-block scripts
+block styles
 	link(rel='stylesheet', href='/stylesheets/loggedin.css')
 	link(rel='stylesheet', href='/stylesheets/home.css')
-	script(src='/javascripts/components/BoardSearch.js',type='text/babel')
 
 block heading
 	include partials/header
@@ -15,20 +14,23 @@ block page
 	div.container
 		div.row
 			div#boardSearch.col-lg-12
+				div#boardSearchComponent
 
 		div.row#myStuff
 			div#myBoards.col-lg-5
-				h2='My Boards'
+				h1='My Boards'
 				div#myBoardsComponent
-			div#subs.col-lg-5.col-lg-offset-2
-				h2='Popular Boards'
-				div#popularComponent
+			div#mySubs.col-lg-5.col-lg-offset-2
+				h1='Subscriptions'
+				div#mySubsComponent
 
 		div.row
 			div#popular.col-lg-12
-
-		div.row
-			div#top.col-lg-12
-
+		br
 block footing
 	include partials/footer
+
+block scripts
+	script(src='/javascripts/board/BoardSearch.js',type='text/babel')
+	script(src='/javascripts/board/MyBoards.js',type='text/babel')
+	script(src='/javascripts/board/MySubs.js',type='text/babel')
