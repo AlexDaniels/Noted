@@ -50,8 +50,8 @@
 		
 		return (
 				<div id='search' className='searcher' overflowY='scroll' style={this.state.style}	>
-					<input type='text' className='col-sm-6 col-sm-offset-1 searchInput' placeholder='Board Name or Keyword' ></input>
-					<button className='btn btn-lg col-sm-3 col-sm-offset-1 searchButton' onClick={this.search}>Search</button>
+					<input type='text' className='col-sm-6 col-sm-offset-1 col-xs-12 searchInput' placeholder='Board Name or Keyword' ></input>
+					<button className='btn btn-lg col-sm-3 col-sm-offset-1 col-xs-12 searchButton' onClick={this.search}>Search</button>
 					<br />
 					<br />
 					<br />
