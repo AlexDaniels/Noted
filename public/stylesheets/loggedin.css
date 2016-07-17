@@ -1,18 +1,64 @@
-#nav {
-	margin-bottom: 15px;
-}
-#nav button {
-	margin-left: 35px;
+.navbar {
+	background-color: #004466;
+    border-left-color: black;
+    border-right-color: black;
 }
 
-@media (max-width: 1199px) {
-	#nav button {
-		margin-left: 20px;
-	}
+.center-nav > li{
+	
 }
-@media (max-width: 991px) {
-	#nav button {
-		margin-left: 15px;
-	}
+.center-nav > li > button{
+	
+}
+
+@media screen and (max-width: 767px){
+		
+    .center-nav{
+        float: none;
+        text-align: center;
+    }
+
+    .center-nav > li{
+        float: none;
+        display: inline-block;
+        width: 100%;
+    }
+    .center-nav > li > button{
+    	width: 100%;
+    }
+}
+	@media screen and (min-width: 768px){
+    .center-nav{
+        float: none;
+        text-align: center;
+    }
+
+    .center-nav > li{
+        float: none;
+        display: inline-block;
+    }
+    .center-nav > li > button{
+        margin-left: 5px;
+    	margin-right: 5px;
+    	width: 120px;
+    }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+    .center-nav > li > button{
+        margin-left: 25px;
+    	margin-right: 25px;
+    	width: 120px;
+    }   	
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 1500px) { 
+    .center-nav > li > button{
+        margin-left: 45px;
+    	margin-right: 45px;
+    	width: 120px;
+    }   	
 }
 

@@ -38,8 +38,8 @@
 		
 		return (
 				<div id='search' className='searcher' overflowY='scroll' style={this.state.style}>
-					<input type='text' className='col-lg-6 col-lg-offset-1 searchInput' placeholder='Board Name or Keyword' ></input>
-					<button className='btn btn-lg col-lg-3 col-lg-offset-1 searchButton' onClick={this.search}>Search</button>
+					<input type='text' className='col-sm-6 col-sm-offset-1 searchInput' placeholder='Board Name or Keyword' ></input>
+					<button className='btn btn-lg col-sm-3 col-sm-offset-1 searchButton' onClick={this.search}>Search</button>
 					<br />
 					<br />
 					<br />
@@ -56,10 +56,10 @@ var BoardResult = React.createClass({
 	render: function() {
 		return (
 			<div className='result row' >
-				<h3 className='col-lg-2'>{this.props.name}</h3>
-				<p className='col-lg-4'>{this.props.description}</p>
-				<button className='col-lg-2 col-lg-offset-1 btn'>Open</button>
-				<button className='col-lg-2 btn'>Subscri be</button>
+				<h3 className='col-sm-2'>{this.props.name}</h3>
+				<p className='col-sm-4'>{this.props.description}</p>
+				<button className='col-sm-2 col-sm-offset-1 btn'>Open</button>
+				<button className='col-sm-2 btn'>Subscri be</button>
 			</div>
 		)
 	}

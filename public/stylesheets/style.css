@@ -1,30 +1,17 @@
 body {
-	color: #01A9DB;
-	background-color: #01A9DB
+	color: black;
+	background-color: #ccccb3
 }
 
 #footing {
 	position: fixed;
 	bottom: 0px;
 	height: 20px;
-	background-color: #CC0066
+	background-color: #004466;
 }
 
 #footing p {
 	font-size: 10px;
-}
-
-#nav {
-	height : 90px;
-	background-color: #CC0066;
-	border-radius: 10px;
-	border-style: solid;
-	border-top-color: black;
-	border-bottom-color: black;
-}
-#nav button{
-	position: relative;
-	margin-top: 25px;
 }
 
 h1 {
@@ -33,7 +20,7 @@ h1 {
 
 button {
 	color:black;
-	background-color: #64FE2E;
+	background-color: #669999;
 }
 button:hover {
 	background-color: #F3F781;

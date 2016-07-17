@@ -1,7 +1,22 @@
-div.container-fluid
-	div.row#nav
-		button.col-sm-2.btn='New Board'
-		button.col-sm-2.btn='People'
-		button.col-sm-2.btn='Alerts'
-		button.col-sm-2.btn='My Account'
-		button.col-sm-2.btn='Logout'
+html
+  body
+    nav.navbar.navbar-inverse
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar-collapse', aria-expanded='false')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+        #navbar-collapse.collapse.navbar-collapse
+          ul.nav.navbar-nav.center-nav.row
+            li
+              button.btn.navbar-btn.btn-lg Home
+            li
+              button.btn.navbar-btn.btn-lg New Board
+            li
+              button.btn.navbar-btn.btn-lg People
+            li
+              button.btn.navbar-btn.btn-lg Alerts
+            li
+              button.btn.navbar-btn.btn-lg My Account

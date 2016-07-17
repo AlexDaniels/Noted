@@ -1,6 +1,6 @@
 .searcher {
 	border-radius: 10px;
-	background-color: #CC0066;
+	background-color: #004466;
 	border-radius: 10px;
 	border-style: solid;
 	border-color: black;
@@ -17,13 +17,13 @@
 .result {
 	height: 60px;
 	margin-top: 15px;
-	background-color: #7401DF;
+	background-color:  #334444;
 	border-radius: 10px;
 	border-style: solid;
 	border-top-color: black;
 	border-bottom-color: black;
-	border-left-color: #7401DF;
-	border-right-color: #7401DF;
+	border-left-color: #004466;
+	border-right-color: #004466;
 }
 .result button{
 	margin-top: 13px;
@@ -34,14 +34,14 @@
 
 .myboards {
 	height: 55px;
-	background-color: #7401DF;
+	background-color:  #334444;
 	margin-top: 6px;
 	border-radius: 5px;
 	border-style: solid;
 	border-top-color: black;
 	border-bottom-color: black;
-	border-left-color: #7401DF;
-	border-right-color: #7401DF;
+	border-left-color: #004466;
+	border-right-color: #004466;
 }
 
 .myboards p {
@@ -59,7 +59,7 @@
 	height :200px;
 	border-radius: 10px;
 	overflow-y: scroll;
-	background-color: #CC0066;
+	background-color: #004466;
 	margin-top: 15px
 	border-radius: 10px;
 	border-style: solid;
@@ -71,7 +71,7 @@
 	height :200px;
 	border-radius: 10px;
 	overflow-y: scroll;
-	background-color: #CC0066;
+	background-color: #004466;
 	margin-top: 15px
 	border-radius: 10px;
 	border-style: solid;
