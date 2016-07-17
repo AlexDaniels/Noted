@@ -31,9 +31,9 @@ var MySub = React.createClass({
 	render: function() {
 		return (
 			<div className='row myboards' >
-				<h3 className='col-lg-8'>{this.props.name}</h3>
-				<button className='btn col-lg-3 col-lg-offset-1'>Open</button>
-				<p className='col-lg-12'>{this.props.description}</p>
+				<h3 className='col-xs-8 col-xs-'>{this.props.name}</h3>
+				<button className='btn col-xs-3 col-xs-offset-1'>Open</button>
+				<p className='col-xs-12'>{this.props.description}</p>
 			</div>
 		)
 	}
