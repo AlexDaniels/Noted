@@ -36,12 +36,12 @@ label {
 }
 
 #indexnav {
-	margin-top:10px;
 	height : 90px;
 	background-color: #CC0066;
 	border-radius: 10px;
 	border-style: solid;
-	border-color: black;
+	border-top-color: black;
+	border-bottom-color: black;
 }
 #indexnav input{
 	margin-top: 35px;

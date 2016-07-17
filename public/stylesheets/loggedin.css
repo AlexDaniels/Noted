@@ -1,4 +1,18 @@
-#nav button {
-	margin-left: 20px;
-	margin-right: 20px;
+#nav {
+	margin-bottom: 15px;
 }
+#nav button {
+	margin-left: 35px;
+}
+
+@media (max-width: 1199px) {
+	#nav button {
+		margin-left: 20px;
+	}
+}
+@media (max-width: 991px) {
+	#nav button {
+		margin-left: 15px;
+	}
+}
+

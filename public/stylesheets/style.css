@@ -3,9 +3,6 @@ body {
 	background-color: #01A9DB
 }
 
-#header {
-	height : 45px;
-}
 #footing {
 	position: fixed;
 	bottom: 0px;
@@ -17,20 +14,13 @@ body {
 	font-size: 10px;
 }
 
-#title {
-	margin-top: -15px
-}
-
 #nav {
-	margin-top:10px;
 	height : 90px;
 	background-color: #CC0066;
-}
-#nav input{
-	margin-top: 35px;
-}
-#nav label {
-	margin-top: 39px;
+	border-radius: 10px;
+	border-style: solid;
+	border-top-color: black;
+	border-bottom-color: black;
 }
 #nav button{
 	position: relative;
@@ -47,9 +37,4 @@ button {
 }
 button:hover {
 	background-color: #F3F781;
-}
-
-.col-centered {
-    float: none;
-    margin: 0 auto;
 }

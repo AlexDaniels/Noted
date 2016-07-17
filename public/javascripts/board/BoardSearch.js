@@ -37,14 +37,16 @@
 	render : function() {
 		
 		return (
-				<div id='search' className='row searcher' overflowY='scroll' style={this.state.style}>
+				<div id='search' className='searcher' overflowY='scroll' style={this.state.style}>
 					<input type='text' className='col-lg-6 col-lg-offset-1 searchInput' placeholder='Board Name or Keyword' ></input>
 					<button className='btn btn-lg col-lg-3 col-lg-offset-1 searchButton' onClick={this.search}>Search</button>
 					<br />
 					<br />
 					<br />
 					<br />
-					{this.state.results.map(this.eachResult)}
+					<div className='container'>
+							{this.state.results.map(this.eachResult)}
+					</div>
 				</div>
 		)
 	}
