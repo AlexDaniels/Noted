@@ -26,19 +26,27 @@
 	height: 400px;
 }
 
-@media (min-width: 992px) { 
-	.input-group button {
-		height: 40px;
-		margin-top: 8px;
+@media (min-width: 1200px) { 
+	.dropdown-menu {
+		min-width:175px;
+		width: 175px;
+		background-color: #004466;
+		margin-left: 70px;
+		margin-top: -65px;
+		
 	}
-	.input-group button {
+}
+
+@media (min-width: 992px) { 
+	.input-group > button {
+		height: 40px;
 		margin-bottom : 6px;
 		margin-top : 6px;
 	}
 
 	.input-group input {
 		margin-bottom : 6px;
-		margin-top :6px;
+		margin-top : 6px;
 	}
 
 	.colorPicker button {
@@ -46,11 +54,12 @@
 	}
 
 	.dropdown-menu {
-		min-width:50px;
-		width: 50px;
+		min-width:175px;
+		width: 175px;
 		background-color: #004466;
-		margin-left: 18px;
-		margin-top: -20px;
+		margin-left: 70px;
+		margin-top: -65px;
+		
 	}
 	#btnGroupDrop1 {
 		height: 40px;
@@ -61,8 +70,6 @@
 		width: 100%;
 	}
 }
-
-
 
 
 @media (max-width: 992px) {
@@ -74,9 +81,20 @@
 		height: 100%;
 	}
 	.dropdown-menu {
+		min-width:40px;
+		width: 40px;
 		background-color: #004466;
+		left: 10px;
+		height: 212px;
+		top: 55px;
+
 	}
-	
+	.dropdown-menu button{
+		height: 35px;
+		margin: 0px;
+		left: 6px;
+		top:-5px;
+	}
 	.input-group {
 		margin: 5px;
 	}
@@ -88,4 +106,12 @@
 		height: 30px;
 		width: 100%;
 	}
+
+	#slider {
+		top: 10px;
+	}
+	#chat {
+		left: 15px;
+	}
 }
+
