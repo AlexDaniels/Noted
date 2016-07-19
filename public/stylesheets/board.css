@@ -26,22 +26,19 @@
 	height: 400px;
 }
 
-@media (min-width: 1200px) { 
-	.dropdown-menu {
-		min-width:175px;
-		width: 175px;
-		background-color: #004466;
-		margin-left: 70px;
-		margin-top: -65px;
-		
-	}
-}
 
 @media (min-width: 992px) { 
-	.input-group > button {
-		height: 40px;
-		margin-bottom : 6px;
-		margin-top : 6px;
+
+	#slider {
+		height: 60px;
+	}
+
+	#chat {
+		margin-top:25px;
+	}
+
+	#change {
+		margin-top:25px;
 	}
 
 	.input-group input {
@@ -49,15 +46,27 @@
 		margin-top : 6px;
 	}
 
+	.changeOptions {
+		left:66px;
+		top:200px;
+		width: 250px;
+		height: 43px;
+		background-color: #004466;
+	}
+	.changeOptions button {
+		height: 100%;
+		background-color: orange;
+	}
+
 	.colorPicker button {
 		height: 35px;
 	}
 
-	.dropdown-menu {
+	.colorOptions {
 		min-width:175px;
 		width: 175px;
 		background-color: #004466;
-		margin-left: 70px;
+		margin-left: 55px;
 		margin-top: -65px;
 		
 	}
@@ -71,8 +80,34 @@
 	}
 }
 
+@media (min-width: 1200px) { 
+	.colorOptions {
+		min-width:175px;
+		width: 175px;
+		background-color: #004466;
+		margin-left: 70px;
+		margin-top: -65px;
+	}
+}
 
 @media (max-width: 992px) {
+
+	#btnGroupDrop3 {
+		width: 60%;
+		background-color: orange;
+	}
+
+	.changeOptions {
+		background-color: #004466;
+		top:65px;
+		left:-20px;
+		margin-top: 0px
+	}
+	.changeOptions button {
+		height: 100%;
+		background-color: orange;
+	}
+
 	.input-group button {
 		height: 40px;
 		margin-top: 8px;
@@ -80,16 +115,15 @@
 	.input-group input {
 		height: 100%;
 	}
-	.dropdown-menu {
+	.colorOptions {
 		min-width:40px;
 		width: 40px;
 		background-color: #004466;
 		left: 10px;
 		height: 212px;
 		top: 55px;
-
 	}
-	.dropdown-menu button{
+	.colorOptions button{
 		height: 35px;
 		margin: 0px;
 		left: 6px;
@@ -115,3 +149,26 @@
 	}
 }
 
+@media (max-width: 768px) {
+	
+}
+
+
+@media (max-width: 320px) {
+	#chat {
+		left: 0px;
+	}
+}
+
+@media (min-width: 1200px) { 
+	.colorOptions {
+		min-width:175px;
+		width: 175px;
+		background-color: #004466;
+		margin-left: 70px;
+		margin-top: -65px;
+	}
+	.changeOptions {
+		left:82px;
+	}
+}
