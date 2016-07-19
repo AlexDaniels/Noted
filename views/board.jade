@@ -1,0 +1,22 @@
+extends layout
+
+block styles
+	link(rel='stylesheet', href='/stylesheets/loggedin.css')
+	link(rel='stylesheet', href='/stylesheets/board.css')
+
+block heading
+	include partials/header
+
+block navBar
+	include partials/nav
+
+block page
+	div#board
+				
+		br
+block footing
+	include partials/footer
+
+block scripts
+	script(src='/javascripts/board/Board.js',type='text/babel')
+	

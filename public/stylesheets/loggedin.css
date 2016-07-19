@@ -4,13 +4,6 @@
     border-right-color: black;
 }
 
-.center-nav > li{
-	
-}
-.center-nav > li > button{
-	
-}
-
 @media screen and (max-width: 767px){
 		
     .center-nav{

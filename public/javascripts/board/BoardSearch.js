@@ -8,7 +8,8 @@
 				'border-radius': '10px',
 				'border-style': 'solid',
 				'border-color': 'black',
-				'margin-bottom': '15px',
+				'margin-bottom': '30px',
+				'margin-top' : '20px',
 				'height':'110px'
 			}
 		}
@@ -22,8 +23,9 @@
 				'border-radius': '10px',
 				'border-style': 'solid',
 				'border-color': 'black',
-				'margin-bottom': '15px',
-				'height':'410px',
+				'margin-bottom': '35px',
+				'margin-top' : '20px',
+				'height':'400px',
 				'overflowY': 'scroll',
 				'overflowX': 'hidden'
 			},

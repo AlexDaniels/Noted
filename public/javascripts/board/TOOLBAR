@@ -1,0 +1,94 @@
+TOOLBAR
+
+A user can remove all notes on a board they own
+A user can move all notes on boards they own
+A user can rotate a note
+A user can change the color of their notes
+A user can change the text color of their notes
+A user can change a note into a photo, video or subboard
+
+BOARD EDIT PAGE
+
+A user can make another user a board owner
+A user can remove themselves as an owner of a bulletin board. A board with no owners is deleted
+A user can change a boards category
+A user can change a boards keywords
+A user can change a boards name
+
+
+Monday 18
+	Toolbar - Scalable
+	Board and Note component complete
+	Messages
+	Put it all together
+
+Tuesday 19
+	Finishing touches on the note app
+	Integration
+
+Wednesday 20
+	Fix problems with Board page and try to finalize
+	New Board Page scalable
+
+Thursday 21
+	My Profile
+	People Page scalable
+	Alerts
+	Integrtion
+
+Friday 22
+	Optimize
+
+Saturday 23
+	Optimize
+
+Sunday 24
+	Testing
+
+Monday 25
+	
+
+Tuesday 26
+	
+
+Wednesday 27
+
+
+Thursday 28
+	Final iteration
+	Final Touches
+	Optimization
+	Testing
+
+						  <button type="button" className="btn btn-secondary col-md-12">Save</button>
+						  <button type="button" className="btn btn-secondary col-md-12">Change</button>
+						  <button type="button" className="btn btn-secondary col-md-12">Delete</button>
+						  <button type="button" className="btn btn-secondary col-md-12">Cancel</button>
+						  <input id='slider' type="range" className=""></input>
+						  <div id='textColor' className="input-group colorPicker" role="group">
+						    <button id="btnGroupDrop1" type="button" className="col-md-6 col-md-offset-3 btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						    	
+						    </button>
+						    <div className='col-md-3'></div>
+						    <div className="dropdown-menu" aria-labelledby="btnGroupDrop1">
+						      <button className="dropdown-item btn" style="background-color:red;">A</button>
+						      <button className="dropdown-item btn"></button>
+						      <button className="dropdown-item btn"></button>
+						      <button className="dropdown-item btn"></button>
+						      <button className="dropdown-item btn"></button>
+						    </div>
+						  </div>
+						  <div id='noteColor' className="input-group colorPicker" role="group">
+						    <button id="btnGroupDrop1" type="button" className="col-md-6 col-md-offset-3 btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						    	
+						    </button>
+						    <div className='col-md-3'></div>
+						    <div className="dropdown-menu" aria-labelledby="btnGroupDrop1">
+						      <button className="dropdown-item btn"></button>
+						      <button className="dropdown-item btn"></button>
+						      <button className="dropdown-item btn"></button>
+						      <button className="dropdown-item btn"></button>
+						      <button className="dropdown-item btn"></button>
+						    </div>
+						  </div>
+						  <button type="button" className="btn btn-secondary col-md-12">Save</button>

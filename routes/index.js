@@ -26,6 +26,17 @@ router.get('/home', function(req, res) {
 	}*/
 });
 
+router.get('/board', function(req, res) {
+	res.render('board', { title: 'Board Name' });
+	/*try {
+		if (req.session.name) {
+			res.render('board', { title: 'Board Name' });
+		}
+	}
+	catch (err) {
+		res.render('index',{ title: 'Noted' });
+	}*/
+});
 
 
 module.exports = router;

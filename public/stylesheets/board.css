@@ -1,0 +1,91 @@
+#save {
+	background-color: green;
+}
+
+#change {
+	background-color: orange;
+}
+
+#delete {
+	background-color: red;
+}
+
+#cancel {
+	background-color: yellow;
+}
+
+#chat {
+	background-color: blue;
+}
+
+.input-group div {
+	text-align: center;
+}
+
+#board {
+	height: 400px;
+}
+
+@media (min-width: 992px) { 
+	.input-group button {
+		height: 40px;
+		margin-top: 8px;
+	}
+	.input-group button {
+		margin-bottom : 6px;
+		margin-top : 6px;
+	}
+
+	.input-group input {
+		margin-bottom : 6px;
+		margin-top :6px;
+	}
+
+	.colorPicker button {
+		height: 35px;
+	}
+
+	.dropdown-menu {
+		min-width:50px;
+		width: 50px;
+		background-color: #004466;
+		margin-left: 18px;
+		margin-top: -20px;
+	}
+	#btnGroupDrop1 {
+		height: 40px;
+		width: 100%;
+	}
+	#btnGroupDrop2 {
+		height: 40px;
+		width: 100%;
+	}
+}
+
+
+
+
+@media (max-width: 992px) {
+	.input-group button {
+		height: 40px;
+		margin-top: 8px;
+	}
+	.input-group input {
+		height: 100%;
+	}
+	.dropdown-menu {
+		background-color: #004466;
+	}
+	
+	.input-group {
+		margin: 5px;
+	}
+	#btnGroupDrop1 {
+		height: 30px;
+		width: 100%;
+	}
+	#btnGroupDrop2 {
+		height: 30px;
+		width: 100%;
+	}
+}
