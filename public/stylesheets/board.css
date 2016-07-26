@@ -1,5 +1,15 @@
-#boardSection {
+.note textarea {
+	height: 100px;
+	width: 125px;
+	text-align: center;
 	overflow: hidden;
+}
+
+
+
+#boardSection {
+	overflow-y: hidden;
+	overflow-x: scroll;
 }
 
 #boardSection div {
@@ -7,6 +17,12 @@
 	-webkit-box-shadow: 7px 7px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 7px 7px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 7px 7px 5px 0px rgba(0,0,0,0.75)
+}
+
+#boardSection div.editByOther {
+	-webkit-box-shadow: 7px 7px 5px 0px rgba(222,40,40,1);
+    -moz-box-shadow: 7px 7px 5px 0px rgba(222,40,40,1);
+    box-shadow: 7px 7px 5px 0px rgba(222,40,40,1);
 }
 
 #boardSection {

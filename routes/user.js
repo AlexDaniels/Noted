@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var UserManager = require('../myModules/UserManager');
-var sm = new require('../myModules/SecurityManager');
+var SecurityManager = new require('../myModules/SecurityManager');
 
 
 /* GET user methods. */
 router.get('/', function(req, res) {
-	
+
 });
 router.get('/people', function(req, res) {
 	res.json({'Result':'Unimplemented'});
@@ -15,7 +15,28 @@ router.get('/people', function(req, res) {
 
 /* PUT user methods. */
 router.put('/', function(req, res) {
-	res.json({'Result':'Unimplemented'});
+	var username = req.query.username;
+	var email = req.query.email;
+	var hashPassword = req.query.password
+	var next2 = function(value) {
+		if (value.result === true) {
+			res.json(value);
+		}
+	}
+	var next = function(value) {
+		console.log('1')
+		if (value.result === true) {
+			console.log('2')
+			var sm = new SecurityManager()
+			sm.session.login(username,hashPassword,req,next2)
+		}
+		else {
+			console.log('3')
+			res.json(value)
+		}
+	}
+	var um = new UserManager();
+	um.add.newUser(username,hashPassword,email,next)
 });
 router.put('/subscribed', function(req, res) {
 	res.json({'Result':'Unimplemented'});

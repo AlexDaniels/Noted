@@ -1,4 +1,4 @@
-var db = require('mongodb').MongoClient;
+	var db = require('mongodb').MongoClient;
 var url = 'mongodb://localhost:27017';
 var ObjectId = require('mongodb').ObjectId;
 
@@ -6,6 +6,8 @@ var SecurityManager = function(){};
 
 SecurityManager.prototype.session = {
 	login : function(username,hashPassword,req,next) {
+		console.log(req.session)
+		var me = this;
 		db.connect(url,function(err, db) {
 			if (err) {
 				console.log('Could not connect to the database')
@@ -19,7 +21,8 @@ SecurityManager.prototype.session = {
 						next({result:false});
 					}
 					else {
-						if (authenticate(username, user.password)) {
+						var storedPassword = user[0].password;
+						if (me.authenticate(hashPassword, storedPassword)) {
 							req.session.name = username;
 							req.session.authenticated = true;
 							next({result:true});

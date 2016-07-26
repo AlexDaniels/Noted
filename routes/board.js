@@ -2,10 +2,23 @@ var express = require('express');
 var router = express.Router();
 var mongo = require('mongodb');
 var SecurityManager = require('../myModules/SecurityManager');
+var BoardManager = require('../myModules/BoardManager');
 
 /* GET board methods. */
 router.get('/', function(req, res) {
   res.json({'Result':'Unimplemented'});
+});
+router.get('/myboards', function(req, res) {
+	if (req.session.authenticated) {
+		var bm = new BoardManager();
+		var next = function(boards) {
+			res.json(boards);
+		}
+		bm.get.myBoards(req.session.name,next)
+	}
+	else {
+
+	}
 });
 router.get('/category', function(req, res) {
   res.json({'Result':'Unimplemented'});

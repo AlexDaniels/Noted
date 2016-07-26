@@ -1,12 +1,13 @@
 var db = require('mongodb').MongoClient;
 var url = 'mongodb://localhost:27017';
 var Board = require('./Board')
+var UserManager = require('../UserManager')
 var ObjectId = require('mongodb').ObjectId;
 
 var BoardManager = function(){}
 
 BoardManager.prototype.add = {
-	newBoard : function(name, category, keywords,next) {
+	newBoard : function(name, category, keywords,description, next) {
 		db.connect(url,function(err, db) {
 			if (err) {
 				console.log("Could not connect to database")
@@ -15,7 +16,7 @@ BoardManager.prototype.add = {
 			else {
 				console.log('Conection to database established')
 				var collection = db.collection('boards');
-				var newBoard = new Board({name:name,category:category,keywords:keywords,messages:[],notes:[]})
+				var newBoard = new Board({name:name,category:category,keywords:keywords,messages:[],description:description,notes:[]})
 				collection.insert(newBoard);
 				next({result:true})
 				db.close();
@@ -102,6 +103,36 @@ BoardManager.prototype.get = {
 				})
 			}
 		})
+	},
+	myBoards : function(username,next) {
+
+		var next2 = function(user) {
+			var ids = user.boardsOwned;
+			console.log("ids:"+ids[0],username)
+			db.connect(url,function(err, db) {
+				if (err) {
+					console.log('Could not connect to the database')
+					next({result:false});
+				}
+				else {
+					console.log('Conection to database established')
+					ids = ids.map(function(id) { return ObjectId(id); });
+					var collection = db.collection('boards')
+					collection.find({_id: {$in: ids}}).toArray(function(err, boards) {
+						if (err) {
+							next({result:false});
+						}
+						else {
+							console.log('next2'+next)
+							next(boards);
+						}
+						db.close();
+					})
+				}
+			})
+		}
+		var um = new UserManager();
+		um.get.user(username,next2);
 	},
 	boardListByCategory : function(category,next) {
 		db.connect(url,function(err, db) {

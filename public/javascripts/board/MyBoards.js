@@ -1,11 +1,24 @@
 var MyBoards = React.createClass({
 	getInitialState : function() {
 		return {
-			boards : [{'name':'board','description':'A board for all boards to board'},{'name':'board','description':'A board for all boards to board'},{'name':'board','description':'A board for all boards to board'},{'name':'board','description':'A board for all boards to board'},{'name':'board','description':'A board for all boards to board'}]
+			boards : []
 		}
 	},
+	componentDidMount : function() {
+		this.getMyBoards();
+	},
 	getMyBoards : function() {
-		
+		var me = this;
+		var path = 'http://localhost:3000/board/myboards'
+		var next = function(value) {
+			me.setState({boards:value})
+		}
+		var options = {
+			methodType:'GET',
+			path:path,
+			next: next
+		}
+		sendMessage(options)
 	},
 	eachBoard : function(board,i) {
 		return (

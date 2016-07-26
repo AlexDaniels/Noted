@@ -4,27 +4,20 @@ var mongo = require('mongodb');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-
-  res.render('index', { title: 'Noted' });
-  try {
-		if (req.session.name) {
-			res.render('home', { title: 'Username' });
-		}
+	if (req.session.name) {
+		res.render('home', { title: 'Username' });
 	}
-	catch (err) {
+	else {
 		res.render('index',{ title: 'Noted' });
-	} 
+	}
 });
 router.get('/home', function(req, res) {
-	res.render('home', { title: 'Username' });
-	/*try {
-		if (req.session.name) {
-			res.render('home', { title: 'Username' });
-		}
+	if (req.session.name) {
+		res.render('home', { title: req.session.name });
 	}
-	catch (err) {
+	else {
 		res.render('index',{ title: 'Noted' });
-	}*/
+	}
 });
 
 router.get('/board', function(req, res) {

@@ -154,8 +154,6 @@ UserManager.prototype.get = {
 						next({result:false});
 					}
 					else {
-						user[0].password = null;
-						console.log(user)
 						next(user[0]);
 					}
 					db.close();

@@ -11,12 +11,7 @@ router.post('/login', function(req, res) {
 		var username = req.query.username
 		var password = req.query.password
 		var next = function(val) {
-			if (val.result === true) {
-				res.render('home')
-			}
-			else {
-				res.render('error')
-			}
+			res.json(val)
 		}
 
 		sm.session.login(username,password,req,next)
