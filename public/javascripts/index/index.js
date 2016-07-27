@@ -36,6 +36,7 @@ loginBtn.on('click', function(){
 		}
 		else {
 			//Display Error
+			console.log(value)
 		}
 	}
 	var options = {

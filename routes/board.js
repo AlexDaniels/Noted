@@ -3,6 +3,7 @@ var router = express.Router();
 var mongo = require('mongodb');
 var SecurityManager = require('../myModules/SecurityManager');
 var BoardManager = require('../myModules/BoardManager');
+var UserManager = require('../myModules/UserManager');
 
 /* GET board methods. */
 router.get('/', function(req, res) {
@@ -33,7 +34,23 @@ router.get('/categories', function(req, res) {
 
 /* PUT board methods. */
 router.put('/', function(req, res) {
-  res.json({'Result':'Unimplemented'});
+  
+	var title = req.query.title;
+	var category = req.query.category;
+	var description = req.query.description;
+
+	var next = function(id) {
+		var next2 = function(val) {
+			res.json(val);
+		}
+		var um = new UserManager();
+		console.log('ID:::::::::'+id)
+		um.add.boardToOwnerList(req.session.name, id,next2);
+	}
+
+	//create board
+	var bm = new BoardManager();
+	bm.add.newBoard(title, category, null,description, next)
 });
 
 

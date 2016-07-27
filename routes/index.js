@@ -20,7 +20,8 @@ router.get('/home', function(req, res) {
 	}
 });
 
-router.get('/board', function(req, res) {
+router.get('/board/editor/:id', function(req, res) {
+	
 	res.render('board', { title: 'Board Name' });
 	/*try {
 		if (req.session.name) {
@@ -31,6 +32,20 @@ router.get('/board', function(req, res) {
 		res.render('index',{ title: 'Noted' });
 	}*/
 });
+
+router.get('/newboard', function(req, res) {
+	res.render('newboard', { title: 'Create A New Board' });
+	/*try {
+		if (req.session.name) {
+			res.render('board', { title: 'Board Name' });
+		}
+	}
+	catch (err) {
+		res.render('index',{ title: 'Noted' });
+	}*/
+});
+
+
 
 
 module.exports = router;

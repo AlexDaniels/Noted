@@ -4,7 +4,7 @@ var Board = React.createClass({
 		var x = evt.pageX - $('#boardSection').offset().left | 0;
 		var y = evt.pageY - $('#boardSection').offset().top | 0;
 
-		console.log(Something)
+		
 
 		var me = this;
 
@@ -123,7 +123,7 @@ var Board = React.createClass({
 
 		var board = {
 			id:'23424242',
-			notes:[note],
+			notes:[],
 			user:'Alex'
 		}
 

@@ -27,6 +27,7 @@ var MyBoards = React.createClass({
 			index={i}
 			key={i}
 			description={board.description}
+			id={board._id}
 			>
 			</MyBoard>
 		)
@@ -41,11 +42,15 @@ var MyBoards = React.createClass({
 })
 
 var MyBoard = React.createClass({
+	goToBoard : function(event) {
+		var id = event.target.id;
+		window.location = '/board/editor/' + id
+	},
 	render: function() {
 		return (
 			<div className='row myboards' >
 				<h3 className='col-xs-8'>{this.props.name}</h3>
-				<button className='btn col-xs-3 col-xs-offset-1'>Open</button>
+				<button id={this.props.id} onClick={this.goToBoard} className='btn col-xs-3 col-xs-offset-1'>Open</button>
 				<p className='col-xs-12'>{this.props.description}</p>
 			</div>
 		)

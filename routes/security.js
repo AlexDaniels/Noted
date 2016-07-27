@@ -20,8 +20,8 @@ router.post('/login', function(req, res) {
 router.post('/logout', function(req, res) {
 	var sm = new SecurityManager()
 	sm.session.logout(req);
-	//Render index
-	res.render('index');
+	console.log('Meow:'+req.session)
+	res.json({result:true})
 });
 
 module.exports = router;

@@ -17,9 +17,11 @@ BoardManager.prototype.add = {
 				console.log('Conection to database established')
 				var collection = db.collection('boards');
 				var newBoard = new Board({name:name,category:category,keywords:keywords,messages:[],description:description,notes:[]})
-				collection.insert(newBoard);
-				next({result:true})
-				db.close();
+				collection.insert(newBoard, function(err,val) {
+					console.log(val)
+					next(val.ops[0]._id)
+					db.close();
+				});
 			}
 		})
 	},

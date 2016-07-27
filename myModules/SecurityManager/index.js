@@ -37,7 +37,7 @@ SecurityManager.prototype.session = {
 		})
 	},
 	logout : function(req) {
-		req.session=null;
+		req.session.destroy()
 	},
 	authenticate : function(givenPass,storedPass) {
 		if (givenPass === storedPass) {

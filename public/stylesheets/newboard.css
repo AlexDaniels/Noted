@@ -1,0 +1,21 @@
+#boardCreator * {
+	text-align: center;
+}
+
+#boardCreator label {
+	margin-top:15px;
+}
+
+#boardCreator input {
+	margin-top:30px;
+	height: 40px;
+}
+
+#boardCreator button {
+	margin-top: 50px;
+	height: 50px;
+}
+
+#boardCreator  {
+	background-color: #004466;
+}

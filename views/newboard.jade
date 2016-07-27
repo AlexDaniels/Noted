@@ -1,0 +1,33 @@
+extends layout
+
+block styles
+	link(rel='stylesheet', href='/stylesheets/loggedin.css')
+	link(rel='stylesheet', href='/stylesheets/newboard.css')
+
+block heading
+	include partials/header
+
+block navBar
+	include partials/nav
+
+block page
+	div#boardCreator.container
+		div.row
+			div.col-xs-12
+				input#newTitle.col-xs-12
+				label.col-xs-12='Title'
+				input#newCategory.col-xs-12
+				label.col-xs-12='Category'
+				input#newDescription.col-xs-12
+				label.col-xs-12='Description'
+				button#createbtn.col-xs-12.col-md-8.col-md-offset-2=(value='Create Board')
+
+				
+		br
+block footing
+	include partials/footer
+
+block scripts
+	script(src='/javascripts/newboard.js')
+	script(src='/javascripts/loggedin.js')
+	

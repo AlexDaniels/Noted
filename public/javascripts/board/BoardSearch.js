@@ -3,13 +3,13 @@
 		return {
 			results: [],
 			style : {
-				'border-radius': '10px',
-				'background-color': '#004466',
-				'border-radius': '10px',
-				'border-style': 'solid',
-				'border-color': 'black',
-				'margin-bottom': '30px',
-				'margin-top' : '20px',
+				'borderRadius': '10px',
+				'backgroundColor': '#004466',
+				'borderRadius': '10px',
+				'borderStyle': 'solid',
+				'borderColor': 'black',
+				'marginBottom': '30px',
+				'marginTop' : '20px',
 				'height':'110px'
 			}
 		}
@@ -18,13 +18,13 @@
 		var results = [{'name':'board','description':'A board for all boards to board'},{'name':'board','description':'A board for all boards to board'},{'name':'board','description':'A board for all boards to board'},{'name':'board','description':'A board for all boards to board'},{'name':'board','description':'A board for all boards to board'},{'name':'board','description':'A board for all boards to board'}]
 		this.setState({
 			style : {
-				'border-radius': '10px',
-				'background-color': '#004466',
-				'border-radius': '10px',
-				'border-style': 'solid',
-				'border-color': 'black',
-				'margin-bottom': '35px',
-				'margin-top' : '20px',
+				'borderRadius': '10px',
+				'backgroundColor': '#004466',
+				'borderRadius': '10px',
+				'borderStyle': 'solid',
+				'borderColor': 'black',
+				'marginBottom': '35px',
+				'marginTop' : '20px',
 				'height':'400px',
 				'overflowY': 'scroll',
 				'overflowX': 'hidden'
