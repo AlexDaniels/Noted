@@ -6,7 +6,7 @@ var ObjectId = require('mongodb').ObjectId;
 var NoteManager = function(){};
 
 NoteManager.prototype.add = {
-	note : function(boardID, callingUser, contents, coordinates, bgColor,textColor,next) {
+	note : function(boardID, callingUser, coordinates, bgColor,textColor,next) {
 		db.connect(url,function(err, db) {
 			if (err) {
 				console.log("Could not connect to database")
@@ -17,9 +17,10 @@ NoteManager.prototype.add = {
 				var collection = db.collection('notes');
 				var newNote = new Note({boardID:boardID,coordinates:coordinates,bgColor:bgColor,
 				textColor:textColor,owner: callingUser})
-				collection.insert(newNote);
-				next({result:true});
-				db.close();
+				collection.insert(newNote,function(err,val) {
+					next(val.ops[0])
+					db.close();
+				});
 			}
 		})
 	}
@@ -37,7 +38,7 @@ NoteManager.prototype.change = {
 				var collection = db.collection('notes')
 				collection.update(
 						{ _id: new ObjectId(noteID) },
-						{ $set: { angle : angle, content:contents,bgColor:bgcolor,textColor:textcolor,coordinates:coordinates} }
+						{ $set: { angle : angle, content:contents,bgColor:bgcolor,textColor:textcolor,coordinates:coordinates, state: {mode:'normal',type:'text',editingUser:''} } }
 				)
 				db.close();
 				next({result:true});
@@ -57,7 +58,7 @@ NoteManager.prototype.change = {
 						{
 							_id: new ObjectId(noteID)
   						 },
-   						{ $set: { "state.editingUser" : callingUser, "state.mode" : 'edit'   } }
+   						{ $set: { "state.editingUser" : callingUser, "state.mode" : 'editing'   } }
 				)
 				db.close();
 				next({result:true});
@@ -177,7 +178,6 @@ NoteManager.prototype.remove = {
 				console.log('Conection to database established')
 				var collection = db.collection('notes');
 				collection.remove({_id:new ObjectId(noteID)})
-
 				next({result:true});
 				db.close();
 			}

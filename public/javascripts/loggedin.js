@@ -1,7 +1,13 @@
 var newBoardButton = $('#'+'newboardbtn');
 
 newBoardButton.on('click', function(){
-	window.location='/newboard'
+  window.location='/newboard'
+})
+
+var homeButton = $('#'+'homebtn');
+
+homeButton.on('click', function(){
+  window.location='/home'
 })
 
 'use strict';

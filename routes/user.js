@@ -11,6 +11,9 @@ router.get('/', function(req, res) {
 router.get('/people', function(req, res) {
 	res.json({'Result':'Unimplemented'});
 });
+router.get('/contextuser', function(req, res) {
+	res.json({'name':req.session.name});
+});
 
 
 /* PUT user methods. */

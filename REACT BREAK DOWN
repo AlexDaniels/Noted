@@ -1,0 +1,85 @@
+-------------------------------------------------------BOARD----------------------------------------------------------
+changeTextColor()
+	Changes the color of the colorpickers main button that opens the options
+	If in editing mode
+		Changes the color of the note currently being edited
+
+changeNoteColor()
+	Changes the color of the colorpickers main button that opens the options
+	If in editing mode
+		Changes the color of the note currently being edited
+
+
+newNote()
+	send a message to the server to add a note with the color of the current pickers and coordinates where clicked
+	if success
+		move board to edit state
+
+edit()
+	send a message to the server asking to move the note clicked into the editing state
+	if the return is success,
+		move board into edit state
+
+save()
+	get all information about the note being edited
+	send that date to the server 
+	exit editing mode
+
+getNotes()
+	get new notes associated with the board
+	get old notes
+	loop through new notes
+		if editing & userIsEditor
+			newNotes[i] = oldNote[i]
+	Set notes to new notes
+
+
+getInitialState()
+	Set boardID and all relevent info for a board 
+
+componentWillMount()
+	Get the board and set board state using the returned board object
+	start interval to update notes
+	
+
+eachNote()
+	returns a note with all relevent properties set
+
+render()
+	Call another render method based on the current state	
+
+renderEditing()
+	Render editing based environment
+
+renderNormal()
+	render normal evironment
+
+renderColorChanger()
+	Since this doesn't change and is rendered in all enviroments, this is just for conveineice and reuse
+
+-------------------------------------------------------NOTE--------------------------------------------------------------
+
+edit()
+	call the edit method of the container board
+
+getInitialState()
+	set state
+
+componentDidUpdate()
+	call kill dragable on all non editing notes
+	call dragable on note if its being edited by the current user
+
+handleChange()
+	adds new text to note when user types
+
+render()
+	Calls the correct render method based on the state
+
+renderEditByUser()
+	render the note as a text area
+
+renderEditByOther()
+	render the note with a black backround
+
+renderNormal()
+	render the note normally

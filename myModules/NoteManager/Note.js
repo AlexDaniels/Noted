@@ -6,7 +6,7 @@ var Note = function(args) {
 	this.bgColor = args.bgColor;
 	this.textColor = args.textColor;
 	this.angle = 0;
-	this.state = {mode:'normal',type:'text',editingUser:''}
+	this.state = {mode:'editing',type:'text',editingUser:args.owner}
 	this.owner = args.owner;
 }
 

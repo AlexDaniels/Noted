@@ -1,0 +1,35 @@
+FIRST PRIORITY
+
+
+WHEN DO WE ENTER EDIT MODE, We Obviously leave on cancel or save
+
+
+Optimize
+	Save should shove a copy of editing note into notes before the state change
+	When you leave the page, the editing note should be sent to the non editing stage
+	Text should include spacing and new lines
+
+1) Subscribe to a board
+	a) Add button to search page or board page
+	b) Add method to subscribe component
+
+2) angle
+	a)Have the angle of the note style be determined by a prop
+	b)Have the slider determine the angle of editing note
+	c)send the data durring updates
+	d)make sure the api accounts for it in the save method
+
+3) Search for a board
+	a) Write a simple search algorythm
+	b) Have the button click call it and the results be displayed
+
+4) Messager
+	a) Build a sub component that will contain the message data
+	b) On message render, call foreach message and display the message sub components
+	c) Set messages as part of the initial environment setup
+
+5) Image
+6) videos
+7) People
+8) Alerts
+9) My Account

@@ -3,63 +3,148 @@ var Board = React.createClass({
 
 		var x = evt.pageX - $('#boardSection').offset().left | 0;
 		var y = evt.pageY - $('#boardSection').offset().top | 0;
-
-		
-
+		var boardID = this.state.boardID;
+		var callingUser = this.state.user;
+		var bgColor = this.state.noteColorPicker;
+		var textColor = this.state.textColorPicker;
+		var path = '/note?boardID='+boardID+'&callingUser='+callingUser+'&x='+x+'&y='+y+'&bgColor='+bgColor+'&textColor='+textColor
 		var me = this;
-
-		var handleNewNoteResponse = function(note) {
-			var newNotes = me.state.notes;
-			newNotes.push(note);
-			me.setState({notes:newNotes,mode:note.state.mode})
-		}
-		var note = {
-			'key':Math.random(0,9999) * 1000000 | 0,
-			'id':Math.random(0,9999) * 1000000 | 0,
-			'coordinates':{x:x,y:y},
-			'bgColor':me.state.noteColorPicker,
-			'textColor':me.state.textColorPicker,
-			'angle':0,
-			'state':{'mode':'editing','type':'text','editingUser':me.state.user},
-			'owner':'unimplemented',
-			'content':''
-		}
-
-		handleNewNoteResponse(note)
-	},
-	edit : function(id) {
-		var newNotes = this.state.notes;
-		var note = newNotes.find(function(note) {	
-			if (note.id == id) {
-				return true;
+		var handleResponse = function(value) {
+			console.log(value)
+			if (value) {
+				me.setState({editingNote:value,mode:'editing'})
 			}
 			else {
-				return false;
-			}
-		});
-		note.state.mode='editing';
-		this.setState({notes:newNotes,mode:'editing'});
+				console.log(value)
+			}	
+		}
+		var options = {
+			methodType:'PUT',
+			path:path,
+			next: handleResponse
+		}
+
+		sendMessage(options)
 
 	},
 	save: function() {
-		var newNotes = this.state.notes;
 		var me = this;
-		var callback = function(note) {
-			if (note.state.editingUser === me.state.user) {
-				note.state.mode='normal';
-				console.log(note)
+		var editingNote = this.state.editingNote;
+		var noteID = editingNote._id;
+  		var angle = editingNote.angle;
+  		var contents = editingNote.content;
+  		var bgcolor = editingNote.bgColor;
+  		var textcolor = editingNote.textColor;
+  		var style = $('#'+editingNote._id).prop('style')
+		var x = style.left;
+		var y = style.top;
+  		var next = function(value) {
+  			if (value.result === true) {
+  				var notes = me.state.notes;
+  				editingNote.state.mode='normal';
+  				editingNote.state.editingUser='';
+  				notes.push(editingNote)
+  				me.setState({mode:'normal',editingNote:{},notes:notes})
+  			}
+  			else {
+  				console.log(value)
+  			}
+  		}
+  		var path = '/note?noteid='+noteID+'&angle='+angle+'&contents='+contents+'&bgcolor='+bgcolor+'&textcolor='+textcolor+'&x='+x+'&y='+y;
+  		var options = {
+  			path:path,
+  			next:next,
+  			methodType:'POST'
+  		}
+  		sendMessage(options);
+  	
+	},
+	edit : function(id) {
+		var me = this;
+		var notes = this.state.notes;
+		var editingNote;
+		notes.map(function(note) {
+			if (note._id === id) {
+				editingNote=note;
 			}
-		}
-		newNotes.forEach(callback)
-		me.setState({mode:'normal',notes:newNotes});
+		})
+  		var next = function(value) {
+  			if (value.result === true) {
+  				editingNote.state.editingUser=me.state.user;
+  				editingNote.state.mode='editing'
+  				me.setState({mode:'editing',editingNote:editingNote})
+  			}
+  		}
+  		var path = '/note/editmode/enter?id=' + id;
+  		var options = {
+  			path: path,
+  			methodType: 'POST',
+  			next: next
+  		}
+  		sendMessage(options);
+
+	},
+	cancel : function() {
+		var me = this;
+  		var next = function(value) {
+  			if (value.result === true) {
+  				me.setState({mode:'normal',editingNote:{}})
+  			}
+  		}
+  		var path = '/note/editmode/exit?id=' + me.state.editingNote._id;
+  		var options = {
+  			path: path,
+  			methodType: 'POST',
+  			next: next
+  		}
+  		sendMessage(options);
+	},
+	delete : function() {
+		var me = this;
+  		var next = function(value) {
+  			if (value.result === true) {
+  				me.setState({mode:'normal',editingNote:{}})
+  			}
+  		}
+  		var path = '/note?id=' + me.state.editingNote._id;
+  		var options = {
+  			path: path,
+  			methodType: 'DELETE',
+  			next: next
+  		}
+  		sendMessage(options);
 	},
 	changeTextColor : function(context) {
 		var color = context.target.id.replace('Text','');
-		this.setState({textColorPicker:color});
+		var editingNote = this.state.editingNote;
+		if (editingNote._id) {
+			var style = $('#'+editingNote._id).prop('style')
+			var x = style.left;
+			var y = style.top;
+			var coordinates={x:x,y:y}
+			editingNote.textColor=color;
+			editingNote.coordinates=coordinates;
+		}
+		this.setState({textColorPicker:color,editingNote:editingNote});
 	},
 	changeNoteColor : function(context) {
 		var color = context.target.id.replace('Note','');
-		this.setState({noteColorPicker:color});
+		var editingNote = this.state.editingNote;
+		if (editingNote._id) {
+			var style = $('#'+editingNote._id).prop('style')
+			var x = style.left;
+			var y = style.top;
+			var coordinates={x:x,y:y}
+			editingNote.bgColor=color;
+			editingNote.coordinates=coordinates;
+		}
+		this.setState({noteColorPicker:color,editingNote:editingNote});
+	},
+	changeEditingNote : function(newState) {
+		var editingNote = this.state.editingNote;
+		editingNote.content=newState.content;
+		editingNote.coordinates=newState.coordinates;
+		this.setState({editingNote:editingNote})
 	},
 	//------------------------------------------------------------------------------------------------------
 	isUserEditing : function() {
@@ -71,11 +156,15 @@ var Board = React.createClass({
 		}
 	},
 	eachNote : function(note,i) {
+		var me = this;
+		if (note.state.mode === 'editing' && note.state.editingUser === this.state.user) {
+			return null;
+		}
 		return (
 			<Note 
-				key={note.key}
+				key={Math.random(0,9999) * 1000000 | 0}
 				index={i}
-				id={note.id}
+				id={note._id}
 				left={note.coordinates.x} 
 				top={note.coordinates.y}
 				bgColor={note.bgColor}
@@ -85,17 +174,20 @@ var Board = React.createClass({
 				type={note.state.type}
 				editingUser={note.state.editingUser}
 				owner={note.owner}
-				setBoardToEdit={this.edit}
-				isUserEditing={this.isUserEditing}
+				setBoardToEdit={me.edit}
+				isUserEditing={me.isUserEditing}
 				content={note.content}
-				user={this.state.user}
+				user={me.state.user}
+				changeEditingNote={me.changeEditingNote}
 			></Note>
 		)
 	},
 	getInitialState : function() {
+		var id = window.location.pathname
+			id = id.slice(id.lastIndexOf('/')+1)
 
 		return {
-			boardID:'',
+			boardID:id,
 			notes: [],
 			toolStyle : {
 				'width':'100%',
@@ -115,33 +207,43 @@ var Board = React.createClass({
 	},
 	componentWillMount : function() {
 		var me = this;
-		var setEnvironment = function(board) {
-			me.setState({boardID:board.id,notes:board.notes,user:board.user})
+
+		var setUser = function(user) {
+			me.setState({user:user.name})
 		}
-
-		
-
-		var board = {
-			id:'23424242',
-			notes:[],
-			user:'Alex'
+		var path = '/user/contextUser';
+		var options = {
+			methodType:'GET',
+			path:path,
+			next: setUser
 		}
-
-		setEnvironment(board);
+		sendMessage(options);
 	},
 	componentDidMount : function() {
 		var me = this;
 		setInterval(function() {
-			var newNotes = me.state.notes;
-			for (var i = 0; i< newNotes.length; i++) {
-				var note = newNotes[i];
-				if (note.state.mode !== 'editing') {
-					note.content='Nothing'
-					note.key=Math.random(0,9999) * 1000000 | 0
+			var handleResponse = function(newNotes) {
+				var note = me.state.editingNote
+				
+				if (note._id) {
+					var style = $('#'+note._id).prop('style')
+					var x = style.left;
+					var y = style.top;
+
+					note.coordinates={x:x,y:y}	
 				}
+				
+				me.setState({notes:newNotes,editingNote:note})
 			}
-			me.setState({notes:newNotes})
-			},3000)
+			var path = '/note?id=' + me.state.boardID;
+			var options = {
+				methodType:'GET',
+				path:path,
+				next: handleResponse
+			}
+			sendMessage(options);
+		},4000);
+
 	},
 
 //----------------------------------------------------------------------------------------------------
@@ -176,8 +278,38 @@ var Board = React.createClass({
 			</div>
 			)
 	},
-	renderMessage : function() {
+	renderEditingNote : function() {
+		var note = this.state.editingNote
+		console.log(note._id)
+		var me = this;
+		var i = null;
 
+		if (!note._id) {
+			return null;
+		}
+
+		return (
+			<Note 
+				key={Math.random(0,9999) * 1000000 | 0}
+				index={i}
+				id={note._id}
+				left={note.coordinates.x} 
+				top={note.coordinates.y}
+				bgColor={note.bgColor}
+				textColor={note.textColor}
+				angle={note.angle}
+				mode={note.state.mode}
+				type={note.state.type}
+				editingUser={note.state.editingUser}
+				owner={note.owner}
+				setBoardToEdit={me.edit}
+				isUserEditing={me.isUserEditing}
+				content={note.content}
+				user={me.state.user}
+				changeEditingNote={me.changeEditingNote}
+				editingNote={me.state.editingNote}
+			></Note>
+		)
 	},
 	renderNormal : function() {
 		return (
@@ -225,13 +357,14 @@ var Board = React.createClass({
 								</div>
 							</div>
 							<button onClick={this.save} id='save' type="button" className="btn glyphicon glyphicon-ok btn-secondary col-xs-1 col-md-12"></button>
-							<button id='delete' type="button" className="btn glyphicon glyphicon-trash btn-secondary col-xs-1 col-md-12"></button>
-							<button id='cancel' type="button" className="btn glyphicon glyphicon-remove btn-secondary col-xs-1 col-md-12"></button>
+							<button onClick={this.delete} id='delete' type="button" className="btn glyphicon glyphicon-trash btn-secondary col-xs-1 col-md-12"></button>
+							<button onClick={this.cancel} id='cancel' type="button" className="btn glyphicon glyphicon-remove btn-secondary col-xs-1 col-md-12"></button>
 							<button id='chat' type="button" className="btn glyphicon glyphicon-comment btn-secondary col-xs-1 col-md-12"></button>
 						</div>
 					</div>
 					<div id='boardSection' className='col-lg-11 col-md-10 col-md-offset-1 col-lg-offset-0 col-xs-12' style={this.state.boardStyle}>
 						{this.state.notes.map(this.eachNote)}
+						{this.renderEditingNote()}
 					</div>
 
 				</div>
@@ -266,22 +399,11 @@ var Note = React.createClass({
 				backgroundColor: this.props.bgColor,
 				color: this.props.textColor
 			},
-			mode: 'normal',
-			content: this.props.content,
+			mode: this.props.mode,
+			content: this.props.content
 		}
 	},
-	handleChange : function(event) {
-		this.setState({content: event.target.value});
-	},
-	edit : function(event) {
-		event.stopPropagation();
-		if (!this.props.isUserEditing()) {
-			this.props.setBoardToEdit(event.target.id)
-		}
-		
-	},
-	componentDidUpdate : function() {
-		console.log(this.props.mode,this.props.editingUser,this.props.user)
+	componentDidMount : function() {
 		if (this.props.mode === 'editing' && this.props.editingUser === this.props.user) {
 			$('#'+this.props.id).draggable()
 		}
@@ -290,7 +412,34 @@ var Note = React.createClass({
 			$('#'+this.props.id).draggable('destroy')
 		}
 	},
+	handleChange : function(event) {
+		var style = $('#'+this.props.id).prop('style')
+		var x = style.left;
+		var y = style.top;
+		var coordinates={x:x,y:y}
+		this.props.changeEditingNote({content: event.target.value,coordinates:coordinates});
 
+	},
+	edit : function(event) {
+		event.stopPropagation();
+		if (!this.props.isUserEditing()) {
+			this.props.setBoardToEdit(event.target.id)
+		}
+		
+	},
+	onFocus : function(event) {
+		this.moveCaretToEnd(event.target);
+	},
+	moveCaretToEnd : function(el) {
+	    if (typeof el.selectionStart == "number") {
+	        el.selectionStart = el.selectionEnd = el.value.length;
+	    } else if (typeof el.createTextRange != "undefined") {
+	        el.focus();
+	        var range = el.createTextRange();
+	        range.collapse(false);
+	        range.select();
+	    }
+	},
 	//----------------------------------------------------------------------------------
 
 	renderNormal : function() {
@@ -300,7 +449,7 @@ var Note = React.createClass({
 	},
 	renderEditByUser : function() {
 		return (
-				<div id={this.props.id} className='note ui-widget-content' style={this.state.style}><textarea onChange={this.handleChange} value={this.state.content}></textarea></div>
+				<div id={this.props.id} className='note ui-widget-content' style={this.state.style}><textarea autoFocus onFocus={this.onFocus} onChange={this.handleChange} value={this.state.content}></textarea></div>
 			)		
 	},
 	renderEditByOther : function() {

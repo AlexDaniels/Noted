@@ -5,11 +5,13 @@ var next = function(result) {
 	console.log(result);
 }
 
-//nm.add.note('577df3ef1ddf0de021169cda', "Alex", "New Note", {x:100,y:100}, "red",'blue', next);
+//nm.add.note('5798240dc70758366ca115a8', "Alex", "New Note", {x:400,y:400}, "red",'black', next);
 
 //nm.change.note('577eb41d9afebdf4132e3320',30,"time","tellow",'black',{x:20,y:40},next);
 
-//nm.remove.note('577e92019ad198995904f5af',next)
+nm.remove.note('57997111a1a94b6da2cdb6e0',next)
+
+
 
 //nm.change.angle('577e91f87aceb58b59b8cc59',100,next)
 //nm.change.contents('577e91f87aceb58b59b8cc59',"New Contents",next)
@@ -24,4 +26,4 @@ var next = function(result) {
 //nm.change.into.image('577eb41d9afebdf4132e3320',next)
 //nm.change.into.video('577eb41d9afebdf4132e3320',next)
 
-nm.get.notes('577df3ef1ddf0de021169cda', next)
+nm.get.notes('5798240dc70758366ca115a8', next)

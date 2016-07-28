@@ -7,7 +7,7 @@ var UserManager = require('../myModules/UserManager');
 
 /* GET board methods. */
 router.get('/', function(req, res) {
-  res.json({'Result':'Unimplemented'});
+
 });
 router.get('/myboards', function(req, res) {
 	if (req.session.authenticated) {
