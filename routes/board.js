@@ -6,8 +6,13 @@ var BoardManager = require('../myModules/BoardManager');
 var UserManager = require('../myModules/UserManager');
 
 /* GET board methods. */
-router.get('/', function(req, res) {
-
+router.get('/search', function(req, res) {
+	var bm = new BoardManager();
+	var searchString = req.query.search;
+	var next = function(boards) {
+		res.json(boards);
+	}
+	bm.get.search(searchString,next)
 });
 router.get('/myboards', function(req, res) {
 	if (req.session.authenticated) {
@@ -16,6 +21,18 @@ router.get('/myboards', function(req, res) {
 			res.json(boards);
 		}
 		bm.get.myBoards(req.session.name,next)
+	}
+	else {
+
+	}
+});
+router.get('/mysubs', function(req, res) {
+	if (req.session.authenticated) {
+		var bm = new BoardManager();
+		var next = function(boards) {
+			res.json(boards);
+		}
+		bm.get.mySubs(req.session.name,next)
 	}
 	else {
 

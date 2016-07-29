@@ -136,6 +136,35 @@ BoardManager.prototype.get = {
 		var um = new UserManager();
 		um.get.user(username,next2);
 	},
+	mySubs : function(username,next) {
+
+		var next2 = function(user) {
+			var ids = user.boardsSubscribed;
+			db.connect(url,function(err, db) {
+				if (err) {
+					console.log('Could not connect to the database')
+					next({result:false});
+				}
+				else {
+					console.log('Conection to database established')
+					ids = ids.map(function(id) { return ObjectId(id); });
+					var collection = db.collection('boards')
+					collection.find({_id: {$in: ids}}).toArray(function(err, boards) {
+						if (err) {
+							next({result:false});
+						}
+						else {
+							console.log('next2'+next)
+							next(boards);
+						}
+						db.close();
+					})
+				}
+			})
+		}
+		var um = new UserManager();
+		um.get.user(username,next2);
+	},
 	boardListByCategory : function(category,next) {
 		db.connect(url,function(err, db) {
 			if (err) {
@@ -177,6 +206,50 @@ BoardManager.prototype.get = {
 				})
 			}
 		})
+	},
+	setup : function() {
+		db.connect(url,function(err, db) {
+			if (err) {
+				console.log('Could not connect to the database')
+				next({result:false});
+			}
+			else {
+				console.log('Conection to database established')
+				var collection = db.collection('boards')
+				collection.createIndex({
+     				name: "text",
+     				description: "text"
+   				})
+			}
+			db.close()
+		})
+	},
+	search : function(searchString, next) {
+		//Search for boards matching criteria
+		db.connect(url,function(err, db) {
+			if (err) {
+				console.log('Could not connect to the database')
+				next({result:false});
+			}
+			else {
+				console.log('Conection to database established')
+				var collection = db.collection('boards')
+				collection.find({
+  					$text:{
+      					$search: searchString
+      					//$diacriticSensitive: true;
+    				}
+				}).toArray(function(err, boards) {
+					if (err) {
+						next({result:false});
+					}
+					else {
+						next(boards);
+					}
+					db.close();
+				})
+			}
+		})	
 	},
 	topCategories : function(keywords,next) {
 		console.log('Unimplemented');

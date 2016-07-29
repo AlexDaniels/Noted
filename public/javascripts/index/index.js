@@ -2,17 +2,20 @@ var xhttp = new XMLHttpRequest()
 var signUpBtn = $('#'+'signupbtn');
 
 signUpBtn.on('click', function(){
-	var username = document.getElementById('newUsername').value
-	var password = document.getElementById('newPassword').value;
+	var usernameEl = document.getElementById('newUsername')
+	var username = usernameEl.value
+	var passwordEl = document.getElementById('newPassword')
+	var password = passwordEl.value;
 	var email = document.getElementById('newEmail').value
 	var path = 'http://localhost:3000/user?username='+username+'&password='+password+'&email='+email
 	var next = function(value) {
-		console.log(typeof value )
+		console.log(value)
 		if (value.result === true) {
 			window.location='/home'
 		}
 		else {
-			//Display Error
+			usernameEl.style.borderColor = "red";
+			usernameEl.style.backgroundColor = "Tomato";
 		}
 	}
 	var options = {
@@ -26,17 +29,26 @@ signUpBtn.on('click', function(){
 var loginBtn = $('#'+'loginbtn');
 
 loginBtn.on('click', function(){
-	var username = document.getElementById('loginUser').value
-	var password = document.getElementById('loginPass').value;
+	var usernameEl = document.getElementById('loginUser')
+	var username = usernameEl.value
+	var passwordEl = document.getElementById('loginPass')
+	var password = passwordEl.value;
 	var path = 'http://localhost:3000/security/login?username='+username+'&password='+password
 	var next = function(value) {
-		console.log(typeof value )
 		if (value.result === true) {
 			window.location='/home'
 		}
 		else {
-			//Display Error
-			console.log(value)
+			if (value.result === 'falseuser') {
+				usernameEl.style.borderColor = "red";
+				usernameEl.style.backgroundColor = "Tomato";
+			}
+			else if(value.result === 'falsepassword') {
+				usernameEl.style.borderColor = "white";
+				usernameEl.style.backgroundColor = "white";
+				passwordEl.style.borderColor = "red";
+				passwordEl.style.backgroundColor = "Tomato";
+			}
 		}
 	}
 	var options = {

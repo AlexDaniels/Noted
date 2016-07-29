@@ -8,9 +8,9 @@ var um = new UserManager();
 
 //um.remove.user('Alex',next)
 
-//um.add.newUser("Alex","100247245",'alex@gmail.com',next);
+um.add.newUser("Alex","100247245",'alex@gmail.com',next);
 //um.add.boardToOwnerList("Alex",'5796d607d4526b541db67a17',next);
-//um.add.boardToSubscribedList("Alex",123123,next);
+//um.add.boardToSubscribedList("Alex",'57998f6cd5646775ce2caf54',next);
 //um.add.userToPeople("Alex","OtherGuy",next)
 
 //um.change.username("Alex","Shmalex",next)
@@ -23,6 +23,8 @@ var um = new UserManager();
 //um.remove.userFromPeople('Alex','OtherGuy',next);
 //um.remove.user("",next)
 
-um.get.user('Alex',next);
+//um.get.setup();
+
+//um.get.user('Alex',next);
 //um.get.usersPeople('Alex',next);
 

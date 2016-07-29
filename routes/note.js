@@ -30,6 +30,8 @@ router.put('/', function(req, res) {
 		res.json(value)
 	}
 
+	console.log(boardID)
+
 	var nm = new NoteManager()
 	nm.add.note(boardID, callingUser, coordinates, bgColor,textColor,next)
 });

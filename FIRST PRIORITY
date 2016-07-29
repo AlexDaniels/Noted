@@ -1,35 +1,29 @@
 FIRST PRIORITY
 
-
-WHEN DO WE ENTER EDIT MODE, We Obviously leave on cancel or save
-
+9   Lab
+10   Presentation
+11	Testing / Optiimization/ Finalize for handing in and presentation / host site / Error handling / Output when errors 	occur such as login with the wrong pass or sign up with a name that already exits, and don't let people make
+	passwords that suck. current note gets pushed to the top
 
 Optimize
-	Save should shove a copy of editing note into notes before the state change
 	When you leave the page, the editing note should be sent to the non editing stage
 	Text should include spacing and new lines
+	Color's should be nicer
+	Cancel buton, find the editing note in notes and change it's state so it will show up right away
 
-1) Subscribe to a board
-	a) Add button to search page or board page
-	b) Add method to subscribe component
-
-2) angle
+2) angle - 1H
 	a)Have the angle of the note style be determined by a prop
 	b)Have the slider determine the angle of editing note
 	c)send the data durring updates
 	d)make sure the api accounts for it in the save method
 
-3) Search for a board
-	a) Write a simple search algorythm
-	b) Have the button click call it and the results be displayed
-
-4) Messager
+4) Messager - 3H
 	a) Build a sub component that will contain the message data
 	b) On message render, call foreach message and display the message sub components
 	c) Set messages as part of the initial environment setup
 
-5) Image
-6) videos
-7) People
-8) Alerts
-9) My Account
+5) Image - 3H
+	Have a note render if  it's of type image
+	By defailt displays some picture
+	on edit, it displays a text box for a link to a photo
+	on render it creates an iframe or image tag 

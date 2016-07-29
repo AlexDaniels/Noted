@@ -21,14 +21,19 @@ SecurityManager.prototype.session = {
 						next({result:false});
 					}
 					else {
-						var storedPassword = user[0].password;
-						if (me.authenticate(hashPassword, storedPassword)) {
-							req.session.name = username;
-							req.session.authenticated = true;
-							next({result:true});
+						if (user[0]) {
+							var storedPassword = user[0].password;
+							if (me.authenticate(hashPassword, storedPassword)) {
+								req.session.name = username;
+								req.session.authenticated = true;
+								next({result:true});
+							}
+							else {
+								next({result:'falsepassword'});
+							}
 						}
 						else {
-							next({result:false});
+							next({result:'falseuser'})
 						}
 					}
 					db.close();

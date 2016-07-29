@@ -14,13 +14,30 @@ UserManager.prototype.add = {
 			else {
 				console.log('Conection to database established')
 				var collection = db.collection('users');
-				var time = new Date().toDateString();
-				var welcomeAlert = {user:"Alex", contents:"Welcome to Noted. I hope you enjoy this website.",time:time}
-				var newUser = new User({username:username,password:hashPassword,email:email,
+				var next1 = function() {
+					var time = new Date().toDateString();
+					var welcomeAlert = {user:"Alex", contents:"Welcome to Noted. I hope you enjoy this website.",time:time}
+					var newUser = new User({username:username,password:hashPassword,email:email,
 											boardsOwnded:[],boardsSubsribed:[],alerts:[welcomeAlert],people:[]})
-				collection.insert(newUser);
-				next({result:true})
-				db.close();
+					collection.insert(newUser);
+					db.close();
+					next({result:true})
+				}
+				collection.find({username:username}).toArray(function(err, user) {
+					if (err) {
+						db.close()
+						next({result:'falseuser'});
+					}
+					else {
+						if (user[0]) {
+							db.close()
+							next({result:'falseuser'})
+						}
+						else {
+							next1()
+						}
+					}
+				})
 			}
 		})
 	},
@@ -38,8 +55,8 @@ UserManager.prototype.add = {
    					{ $push: { boardsOwned : boardID } }
 				)
 				next({result:true});
-				db.close();
 			}
+			db.close();
 		})
 	},
 	boardToSubscribedList : function(username, boardID,next) {
@@ -151,7 +168,7 @@ UserManager.prototype.get = {
 				var collection = db.collection('users')
 				collection.find({username:username}).toArray(function(err, user) {
 					if (err) {
-						next({result:false});
+						next({result:'falseuser'});
 					}
 					else {
 						next(user[0]);
@@ -159,6 +176,20 @@ UserManager.prototype.get = {
 					db.close();
 				})
 			}
+		})
+	},
+	setup : function() {
+		db.connect(url,function(err, db) {
+			if (err) {
+				console.log('Could not connect to the database')
+				next({result:false});
+			}
+			else {
+				console.log('Conection to database established')
+				var collection = db.collection('users')
+				collection.createIndex( { "username": 1 }, { unique: true } )
+			}
+			db.close();
 		})
 	},
 	usersPeople : function(username,next) {

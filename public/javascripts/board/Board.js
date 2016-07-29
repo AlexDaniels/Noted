@@ -1,6 +1,5 @@
 var Board = React.createClass({
 	newNote : function(evt) {
-
 		var x = evt.pageX - $('#boardSection').offset().left | 0;
 		var y = evt.pageY - $('#boardSection').offset().top | 0;
 		var boardID = this.state.boardID;
@@ -9,6 +8,7 @@ var Board = React.createClass({
 		var textColor = this.state.textColorPicker;
 		var path = '/note?boardID='+boardID+'&callingUser='+callingUser+'&x='+x+'&y='+y+'&bgColor='+bgColor+'&textColor='+textColor
 		var me = this;
+		console.log(path)
 		var handleResponse = function(value) {
 			console.log(value)
 			if (value) {
@@ -137,6 +137,7 @@ var Board = React.createClass({
 			var coordinates={x:x,y:y}
 			editingNote.bgColor=color;
 			editingNote.coordinates=coordinates;
+			console.log(color,x,y)
 		}
 		this.setState({noteColorPicker:color,editingNote:editingNote});
 	},
@@ -199,7 +200,7 @@ var Board = React.createClass({
 				'backgroundColor' : '#9E9473'
 			},
 			textColorPicker : 'black',
-			noteColorPicker : 'yellow',
+			noteColorPicker : 'LightPink',
 			mode : 'normal',
 			editingNote : {},
 			user: ''
@@ -247,7 +248,31 @@ var Board = React.createClass({
 	},
 
 //----------------------------------------------------------------------------------------------------
-
+	renderMessage : function() {
+		return (
+			<div className='container-fluid'>
+				<div className='row'>
+					<div className='col-md-1 col-xs-12'>
+						<div style={this.state.toolStyle} className="input-group" role="group" aria-label="Basic example">
+							<div style={{'visibility': 'hidden'}} id='slider' className='col-xs-3 col-md-12'>
+								<input type="range" min='0' max='360'></input>
+								<div>Angle</div>
+							</div>
+							{this.renderColorChanger()}
+							<button style={{'visibility':'hidden'}} id='change' type="button" className="btn glyphicon glyphicon-chevron-right btn-secondary col-md-offset-0 col-md-12 col-xs-offset-1 col-xs-1"></button>
+							<button style={{'visibility':'hidden'}} id='save' type="button" className="btn glyphicon glyphicon-ok btn-secondary col-xs-1 col-md-12"></button>
+							<button style={{'visibility':'hidden'}} id='delete' type="button" className="btn glyphicon glyphicon-trash btn-secondary col-xs-1 col-md-12"></button>
+							<button style={{'visibility':'hidden'}} id='cancel' type="button" className="btn glyphicon glyphicon-remove btn-secondary col-xs-1 col-md-12"></button>
+							<button onClick={this.goToChat} id='chat' type="button" className="btn glyphicon glyphicon-comment btn-secondary col-xs-1 col-md-12"></button>
+						</div>
+					</div>
+					<div id='boardSection' onClick={this.newNote} className='col-lg-11 col-md-10 col-md-offset-1 col-lg-offset-0 col-xs-12' style={this.state.boardStyle}>
+						<h1 style={{'textAlign':'center'}}>Not Implemented</h1>
+					</div>				
+				</div>
+			</div>
+		)
+	},
 	renderColorChanger : function() {
 		return (
 			<div>
@@ -255,10 +280,10 @@ var Board = React.createClass({
 					<button id="btnGroupDrop1" style={{'backgroundColor':this.state.textColorPicker}} type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>	
 					<div className="dropdown-menu colorOptions" aria-labelledby="btnGroupDrop1">
 						<button id='redText' onClick={this.changeTextColor} style={{'backgroundColor': 'red'}} className="col-md-2 col-xs-2 dropdown-item btn"></button>
-						<button id='orangeText' onClick={this.changeTextColor} style={{'backgroundColor': 'orange'}} className="col-md-2 col-xs-2 dropdown-item btn"></button>
+						<button id='blueText' onClick={this.changeTextColor} style={{'backgroundColor': 'blue'}} className="col-md-2 col-xs-2 dropdown-item btn"></button>
 						<button id='yellowText' onClick={this.changeTextColor} style={{'backgroundColor': 'yellow'}} className="col-md-2 col-xs-2 dropdown-item btn"></button>
 						<button id='greenText' onClick={this.changeTextColor} style={{'backgroundColor': 'green'}} className="col-md-2 col-xs-2 dropdown-item btn"></button>
-						<button id='blueText' onClick={this.changeTextColor} style={{'backgroundColor': 'blue'}} className="col-md-2 col-xs-2 dropdown-item btn"></button>
+						<button id='whiteText' onClick={this.changeTextColor} style={{'backgroundColor': 'white'}} className="col-md-2 col-xs-2 dropdown-item btn"></button>
 						<button id='blackText' onClick={this.changeTextColor} style={{'backgroundColor': 'black'}} className="col-md-2 col-xs-2 dropdown-item btn"></button>
 					</div>
 					<div>Text</div>
@@ -266,12 +291,12 @@ var Board = React.createClass({
 				<div id='textColor' className="col-xs-1 col-md-12 button-group colorPicker" role="group">
 					<button style={{'backgroundColor':this.state.noteColorPicker}} id="btnGroupDrop2" type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>	
 					<div className="dropdown-menu colorOptions" aria-labelledby="btnGroupDrop2">
-						<button id='redNote' onClick={this.changeNoteColor} style={{'backgroundColor': 'red'}} className="col-md-2 col-xs-2 dropdown-item btn"></button>
-						<button id='orangeNote' onClick={this.changeNoteColor} style={{'backgroundColor': 'orange'}} className="col-md-2 col-xs-2 dropdown-item btn"></button>
-						<button id='yellowNote' onClick={this.changeNoteColor} style={{'backgroundColor': 'yellow'}} className="col-md-2 col-xs-2 dropdown-item btn"></button>
-						<button id='greenNote' onClick={this.changeNoteColor} style={{'backgroundColor': 'green'}} className="col-md-2 col-xs-2 dropdown-item btn"></button>
-						<button id='blueNote' onClick={this.changeNoteColor} style={{'backgroundColor': 'blue'}} className="col-md-2 col-xs-2 dropdown-item btn"></button>
-						<button id='purpleNote' onClick={this.changeNoteColor} style={{'backgroundColor': 'purple'}} className="col-md-2 col-xs-2 dropdown-item btn"></button>
+						<button id='LightPinkNote' onClick={this.changeNoteColor} style={{'backgroundColor': 'LightPink'}} className="col-md-2 col-xs-2 dropdown-item btn"></button>
+						<button id='MoccasinNote' onClick={this.changeNoteColor} style={{'backgroundColor': 'Moccasin'}} className="col-md-2 col-xs-2 dropdown-item btn"></button>
+						<button id='LightGoldenRodYellowNote' onClick={this.changeNoteColor} style={{'backgroundColor': 'LightGoldenRodYellow'}} className="col-md-2 col-xs-2 dropdown-item btn"></button>
+						<button id='PaleGreenNote' onClick={this.changeNoteColor} style={{'backgroundColor': 'PaleGreen '}} className="col-md-2 col-xs-2 dropdown-item btn"></button>
+						<button id='LightBlueNote' onClick={this.changeNoteColor} style={{'backgroundColor': 'LightBlue'}} className="col-md-2 col-xs-2 dropdown-item btn"></button>
+						<button id='ThistleNote' onClick={this.changeNoteColor} style={{'backgroundColor': 'Thistle'}} className="col-md-2 col-xs-2 dropdown-item btn"></button>
 					</div>
 					<div>Note</div>
 				</div>
@@ -311,6 +336,14 @@ var Board = React.createClass({
 			></Note>
 		)
 	},
+	goToChat : function() {
+		if (this.state.mode === 'messaging') {
+			this.setState({mode:'normal'})
+		}
+		else if (this.state.mode === 'normal'){
+			this.setState({mode:'messaging'})
+		}
+	},
 	renderNormal : function() {
 		return (
 			<div className='container-fluid'>
@@ -326,7 +359,7 @@ var Board = React.createClass({
 							<button style={{'visibility':'hidden'}} id='save' type="button" className="btn glyphicon glyphicon-ok btn-secondary col-xs-1 col-md-12"></button>
 							<button style={{'visibility':'hidden'}} id='delete' type="button" className="btn glyphicon glyphicon-trash btn-secondary col-xs-1 col-md-12"></button>
 							<button style={{'visibility':'hidden'}} id='cancel' type="button" className="btn glyphicon glyphicon-remove btn-secondary col-xs-1 col-md-12"></button>
-							<button id='chat' type="button" className="btn glyphicon glyphicon-comment btn-secondary col-xs-1 col-md-12"></button>
+							<button onClick={this.goToChat} id='chat' type="button" className="btn glyphicon glyphicon-comment btn-secondary col-xs-1 col-md-12"></button>
 						</div>
 					</div>
 					<div id='boardSection' onClick={this.newNote} className='col-lg-11 col-md-10 col-md-offset-1 col-lg-offset-0 col-xs-12' style={this.state.boardStyle}>
@@ -359,7 +392,7 @@ var Board = React.createClass({
 							<button onClick={this.save} id='save' type="button" className="btn glyphicon glyphicon-ok btn-secondary col-xs-1 col-md-12"></button>
 							<button onClick={this.delete} id='delete' type="button" className="btn glyphicon glyphicon-trash btn-secondary col-xs-1 col-md-12"></button>
 							<button onClick={this.cancel} id='cancel' type="button" className="btn glyphicon glyphicon-remove btn-secondary col-xs-1 col-md-12"></button>
-							<button id='chat' type="button" className="btn glyphicon glyphicon-comment btn-secondary col-xs-1 col-md-12"></button>
+							<button onClick={this.goToChat} id='chat' type="button" className="btn glyphicon glyphicon-comment btn-secondary col-xs-1 col-md-12"></button>
 						</div>
 					</div>
 					<div id='boardSection' className='col-lg-11 col-md-10 col-md-offset-1 col-lg-offset-0 col-xs-12' style={this.state.boardStyle}>
